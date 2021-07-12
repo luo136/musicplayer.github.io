@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/index.js" async></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div>
+        <div id="musicplayer">
+            <div class="head">
+                <h1>乐听</h1>
+                <div class="search">
+                    <input type="text" placeholder="请输入..." V-model="keywords" @keyup.enter="getlist">
+                    <span class="iconfont" @click="getlist">&#xe604;</span>
+                </div>   
+            </div>
+            <div id="main">
+                <div class="musiclist">
+                    <ul>
+                        <li v-for="item in musiclist"  @click="playmusic(item.id)">{{item.name}}</li>
+                    </ul>
+                </div>
+
+                <div class="content">
+                    <img src="images/杆子.png" :class="move" alt="">
+                    <div class="pan">
+                        <img src="images/胶片.png" alt="">
+                        <img :src="imgsrc" alt="" :class="xuan">
+                    </div>                 
+                </div>
+
+                <div class="message">
+                    <h5 class="title">热门留言</h5> 
+                    <dl v-for="item in hotComment">
+                        <dt><img :src="item.user.avatarUrl" alt="头像"></dt>
+                        <dd class="name">{{item.user.nickname}}</dd>
+                        <dd class="detail">{{item.content}}</dd>
+                    </dl>
+                </div>
+                
+            </div>
+            <div id="play">
+                <audio :src="musicurl" controls autoplay loop @pause="onPause" @play="onPlay"></audio>
+            </div>
+        </div>
+   </div>
+   
+</body>
+</html>

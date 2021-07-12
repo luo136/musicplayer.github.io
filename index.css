@@ -1,0 +1,218 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+@font-face {
+    font-family: 'iconfont';
+    src:  url('font/iconfont.ttf') format('truetype'),
+          url('font/iconfont.json') format('truetype');
+  }
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;/*字体抗锯齿,更平滑*/
+    -moz-osx-font-smoothing: grayscale;
+  }
+#musicplayer{
+    width: 800px;
+    height: 400px; 
+    background-image: linear-gradient(to right,#CFFAFF 0,#0C85DB 100%);
+    margin: 0 auto;
+    margin-top: 100px;
+    /* 有时候border-radius不会生效,加上一个overflow: hidden就行了 */
+    border-radius: 20px 20px 26px 25px;
+    overflow: hidden;
+}
+ /*头部搜索框  */
+#musicplayer .head{
+    width: 800px;
+    height: 50px;
+    background-color:#3774DE;
+    position: relative;
+    clear: both;
+}
+#musicplayer .head h1{
+    width: 100px;
+    margin-left: 10px;
+    vertical-align: middle;
+    float: left;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#musicplayer .head .search{
+    height: 30px;
+    width:300px;
+    float: right;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 50px;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #D4FEF9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#musicplayer .head .search input{
+    width: 260px;
+    height: 25px;
+    /* outline:none能够去掉input选中时候的边框 */
+    border: none;
+    outline:none;
+    background-color: #D4FEF9;
+}
+#musicplayer .head .search span{
+    font-size: 20px;
+    float: right;
+}
+
+/* 主体部分 */
+#main {
+    clear: both;
+    width: 800px;
+    height: 300px;
+}
+#main .musiclist{
+    width: 200px;
+    height: 300px;
+    float: left;
+    border-right: 1px black solid;
+}
+#main .musiclist ul{
+    /* 让ul出现滚动条 设置ul高度,并且overflow:auto;*/
+    height: 300px;
+    text-align: center;
+    overflow:auto;
+}
+/* 滚动条样式 没有仔细去设置样式了*/
+::-webkit-scrollbar{
+    width: 0px;
+}
+#main .musiclist li:nth-child(odd){
+    background-image: linear-gradient(to right,#CFFAFF 0,#ADC8FF 100%);
+    line-height: 26px;
+}
+#main .musiclist li:hover{
+    cursor: pointer;
+    font-weight: bold;
+}
+#main .content {
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+#main .content .gan{
+    width: 200px;
+    height: 100px;
+    position:absolute;
+    left: 10px;
+    z-index: 9;
+    
+    
+}
+/* 杆子上走 */
+#main .content .ni{
+    transform-origin: left;
+    animation: ni 1s;
+    /* animation-fill-mode让动画保持终态 */
+    animation-fill-mode:forwards;
+}
+@keyframes ni{
+    100%{
+        transform: rotate(-30deg);
+    }
+}
+#main .content .pan{
+    width:300px;
+    height:280px;
+    margin: 0 auto;
+    top: 10px;
+    position: relative;
+    box-sizing: border-box;
+}
+/* 伪类选取子元素 */
+#main .content .pan>:first-child{
+    width: 220px;
+    height: 200px;
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#main .content .pan>:nth-child(2){
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    position: absolute;
+    right: 78px;
+    top: 71px;
+}
+/* 圆盘旋转 */
+#main .content .xuan{
+    animation: pan 6s infinite linear;
+    animation-fill-mode:forwards;
+}
+@keyframes pan{
+    100%{
+        transform: rotate(360deg);
+    }
+}  
+#main .message{
+    margin-top:-300px;
+    width: 200px;
+    height: 300px;
+    float: right;
+    border-left: 1px black solid;
+    overflow: auto;
+}
+#main .message .title{
+    margin-left: 5px;
+    font-weight: bold;
+}
+#main .message dl{
+    width: 200px;
+    height: 100px;
+    position: relative;
+}
+#main .message dl img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top:20px;
+    left: 5px;
+}
+#main .message dl .name{
+    font-size:10px;
+    font-weight: bold;
+    text-align: center;
+    width: 200px;
+    height: 20px;
+    position: absolute;
+    left: 10px;
+    top: 20px;
+}
+#main .message dl .detail{
+    width: 140px;
+    height: 78px;
+    font-size:8px;
+    position: absolute;
+    top:40px;
+    left:50px;
+    overflow: hidden;
+}
+/* 播放控制 */
+#play{
+    width: 800px;
+    height: 50px;
+    box-sizing: border-box;
+}
+#play audio{
+    width: 800px;
+    height: 50px;
+}
